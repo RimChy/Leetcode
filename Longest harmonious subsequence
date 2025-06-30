@@ -1,1 +1,19 @@
-
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        unordered_map<int, int> mp;
+        //set<int> s;
+        for (int i = 0; i < nums.size(); i++) {
+            mp[nums[i]]++;
+            //s.insert(nums[i]);
+        }
+        // sort(nums.begins(),nums.end());
+        int prev=0,j=0,res=0;
+        for(int i=0;i<nums.size();i++){
+            if(mp[nums[i]+1]){
+                res = max(res,mp[nums[i]]+mp[nums[i]+1]);
+            }
+        }
+        return res;
+    }
+};
